@@ -25,17 +25,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.amphibians.R
 import com.example.amphibians.databinding.FragmentAmphibianListBinding
 
-
 class AmphibianListFragment : Fragment() {
-
     private val viewModel: AmphibianViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentAmphibianListBinding.inflate(inflater)
-        // TODO: call the view model method that calls the amphibians api
+        viewModel.getAmphibianList()
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.recyclerView.adapter = AmphibianListAdapter(AmphibianListener { amphibian ->
